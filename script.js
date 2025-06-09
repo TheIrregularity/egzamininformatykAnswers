@@ -19,13 +19,13 @@
         let doc = parser.parseFromString(responseText, 'text/html');
         let correctAnswers = doc.querySelectorAll('.odpgood');
         let answerText = "Correct Answers:\n";
-        let answerList = [];
+        window.answerList = [];
         
         correctAnswers.forEach(answer => {
             let questionNumber = answer.id.replace(/\D/g, '');
             let correctAnswer = answer.querySelector('strong').textContent.trim();
             answerText += `Question ${questionNumber}: ${correctAnswer}\n`;
-            answerList.push(correctAnswer);
+            window.answerList.push(correctAnswer);
         });
 
         console.log(answerText);
